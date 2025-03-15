@@ -1,40 +1,34 @@
 
-# Command & Conquer
+# Tiberian Dawn in Rust
 
 This repository includes source code for Command & Conquer. This release provides support to the [Steam Workshop](https://steamcommunity.com/workshop/browse/?appid=2229830) for the game.
 
+## Porting
 
-## Dependencies
+Most of the game configuration is written in static - depending on the C++ compiler to - in the best way - compile it to e.g. *.rodata*-section of ELF. With Rust the aim is to explicitly define most game configurations at compile-time - thus making it way more likely to get compiled into the **rodata**-section.
 
-If you wish to rebuild the source code and tools successfully you will need to find or write new replacements (or remove the code using them entirely) for the following libraries;
+### Code style
 
-- DirectX 5 SDK
-- Greenleaf Communications Library (GCL)
-- Human Machine Interface (HMI) “Sound Operating System” (SOS)
+The main goal of porting is to keep the Rust port comparable to C++ code. This in turn means that ordering of definitions
+will mostly be kept. Also symbols directly ported from C++ to Rust will keep their C++ naming.
+New code will adhere to Rust code style. This difference should make it easy to distinguish between straight C++ porting and new Rust engine code.
 
+### Compile-time Limitations in Rust
 
+While Rust provides some compile-time support, there are still certain areas in the Rust ecosystem that lack this feature.
+Typical examples are `map`, `unwrap`.
 
-## Compiling (Win32 Only)
+For most of these it can be tried to replace this `match` - which supports compile-time evaluation.
 
-The current state of the source code does not fully compile and does not contain the core engine libraries (you can find these in the [Red Alert](https://github.com/electronicarts/CnC_Red_Alert) code repository) and will require some effort to restore it. If you wish to restore the original build environment, the following tools are required;
+https://github.com/rust-lang/rust/issues/67792
 
-- Watcom C/C++ (v10.6) for C/C++ source files
-- Borland Turbo Assembler (TASM v4.0) for assembly files
-- Microsoft Micro Assembler (MASM v6.11d) for assembly files
+### Idiomatic Enums
 
-To use the compiled binaries, you must own the game. The C&C Ultimate Collection is available for purchase on [EA App](https://www.ea.com/en-gb/games/command-and-conquer/command-and-conquer-the-ultimate-collection/buy/pc) or [Steam](https://store.steampowered.com/bundle/39394/Command__Conquer_The_Ultimate_Collection/).
-
-
-## Contributing
-
-This repository will not be accepting contributions (pull requests, issues, etc). If you wish to create changes to the source code and encourage collaboration, please create a fork of the repository under your GitHub user/organization space.
-
-
-## Support
-
-This repository is for preservation purposes only and is archived without support. 
-
+While Rust has a different enum concept - the goal is to use Rusts enum variants over C++ enum values.
+For compatibility most enums must in turn be expressed with `#[repr(u8)]` or similar to still express the values.
+`NONE` values for indexes should be represented by wrapping the enum in `Option<>`. `NONE` values only make sense in context of Flags.
+`COUNT` values should be expressed by using `EnumCount` crate, which gives the Enum a `COUNT` member value.
 
 ## License
 
-This repository and its contents are licensed under the GPL v3 license, with additional terms applied. Please see [LICENSE.md](LICENSE.md) for details.
+This repository and its contents are licensed under the GPL v3 license, with additional terms (from EA) applied. Please see [LICENSE.md](LICENSE.md) for details.

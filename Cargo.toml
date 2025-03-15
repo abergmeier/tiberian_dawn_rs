@@ -1,0 +1,10 @@
+[package]
+name = "CnC_Tiberian_Dawn"
+version = "0.1.0"
+edition = "2021"
+proc-macro = true
+
+[dependencies]
+bitflags = "2.9.0"
+strum = "0.27.1"
+strum_macros = "0.27.1"

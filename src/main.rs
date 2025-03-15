@@ -1,0 +1,47 @@
+mod aadata;
+mod abstract_;
+mod adata;
+mod aircraft;
+mod animation;
+mod armor;
+mod audio;
+mod bbdata;
+mod bdata;
+mod building;
+mod bullet;
+mod cdata;
+mod color;
+mod coords;
+mod direction;
+mod display;
+mod hdata;
+mod house;
+mod idata;
+mod infantry;
+mod map;
+mod mission;
+mod object;
+mod odata;
+mod overlay;
+mod player;
+mod rtti;
+mod sdata;
+mod smudge;
+mod speed;
+mod tdata;
+mod techno;
+mod template;
+mod terrain;
+mod text;
+mod theater;
+mod udata;
+mod unit;
+mod weapon;
+
+const ADVANCED: bool = false;
+const PATCH: bool = false;
+pub const REFRESH_EOL: u16 = 32767; // This number ends a refresh/occupy offset list.
+
+fn main() {
+    println!("Hello, world!");
+}
