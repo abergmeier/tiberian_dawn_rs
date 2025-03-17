@@ -5,15 +5,7 @@
     unused_variables
 )]
 use crate::{
-    animation::AnimType,
-    armor::ArmorType,
-    building,
-    house::HOUSEF,
-    mission::MissionType,
-    speed::{MPHType, SpeedType},
-    techno::TechnoTypeClass,
-    text::IDs,
-    weapon::WeaponType,
+    animation::AnimType, armor::ArmorType, building, house::HOUSEF, ini::IniName, mission::MissionType, speed::{MPHType, SpeedType}, techno::TechnoTypeClass, text::IDs, weapon::WeaponType
 };
 
 /// The game units are enumerated here. These include not only traditional
@@ -141,6 +133,12 @@ pub struct UnitTypeClass {
     MaxSize: i32,
     // This is a pointer to the wake shape (as needed by the gunboat).
     //static void const * WakeShapes;
+}
+
+impl IniName for UnitTypeClass {
+    fn INI_Name() -> &'static str {
+        "UNITS"
+    }
 }
 
 impl UnitTypeClass {

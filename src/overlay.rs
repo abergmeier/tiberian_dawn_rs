@@ -1,7 +1,7 @@
 #![allow(non_camel_case_types, non_snake_case, non_upper_case_globals, unused_variables)]
 
 
-use crate::{terrain::LandType, text::IDs};
+use crate::{ini::IniName, terrain::LandType, text::IDs};
 
 /// The overlays are enumerated here. An overlay functions similarly to
 /// a transparent icon. It is placed over the terrain but usually falls
@@ -95,6 +95,12 @@ pub struct OverlayTypeClass {
 
     /// If this is true, then the overlay will not show up on the radar map.
     IsRadarVisible: bool,
+}
+
+impl IniName for OverlayTypeClass {
+    fn INI_Name() -> &'static str {
+        "OVERLAY"
+    }
 }
 
 impl OverlayTypeClass {

@@ -5,7 +5,7 @@
     unused_variables
 )]
 
-use crate::{object::ObjectTypeClass, terrain::LandType, text::IDs};
+use crate::{ini::IniName, object::ObjectTypeClass, terrain::LandType, text::IDs};
 
 ///	The game templates are enumerated here. These are the underlying
 /// terrain art. This includes everything from water to clifs. If the
@@ -270,6 +270,12 @@ pub struct TemplateTypeClass<const IC: usize> {
 
     AltLand: LandType,
     AltIcons: [i8; IC],
+}
+
+impl<const IC: usize> IniName for TemplateTypeClass<IC> {
+    fn INI_Name() -> &'static str {
+        "TEMPLATE"
+    }
 }
 
 impl<const IC: usize> TemplateTypeClass<IC> {

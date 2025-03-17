@@ -6,8 +6,7 @@
 )]
 
 use crate::{
-    armor::ArmorType, building::STRUCTF, mission::MissionType, speed::MPHType,
-    techno::TechnoTypeClass, text::IDs, weapon::WeaponType,
+    armor::ArmorType, building::STRUCTF, ini::IniName, mission::MissionType, speed::MPHType, techno::TechnoTypeClass, text::IDs, weapon::WeaponType
 };
 
 ///	The variuos aircraft types are enumerated here. These include helicopters
@@ -45,6 +44,12 @@ pub struct AircraftTypeClass {
     Type: AircraftType,
     ROT: u8,
     Mission: MissionType,
+}
+
+impl IniName for AircraftTypeClass {
+    fn INI_Name() -> &'static str {
+        "AIRCRAFT"
+    }
 }
 
 impl AircraftTypeClass {

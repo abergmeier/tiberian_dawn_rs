@@ -7,6 +7,7 @@
 
 use crate::armor::ArmorType;
 use crate::coords::COORDINATE;
+use crate::ini::IniName;
 use crate::object::ObjectTypeClass;
 use crate::text::IDs;
 use crate::theater::{self, THEATERF};
@@ -102,6 +103,12 @@ pub struct TerrainTypeClass<const OCC: usize, const OVC: usize> {
 
     Occupy: [u16; OCC],
     Overlap: [u16; OVC],
+}
+
+impl<const OCC: usize, const OVC: usize> IniName for TerrainTypeClass<OCC, OVC> {
+    fn INI_Name() -> &'static str{
+        "TERRAIN"
+    }
 }
 
 impl<const OCC: usize, const OVC: usize> TerrainTypeClass<OCC, OVC> {

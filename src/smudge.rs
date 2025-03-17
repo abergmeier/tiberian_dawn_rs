@@ -5,7 +5,7 @@
     unused_variables
 )]
 
-use crate::{object::ObjectTypeClass, text::IDs};
+use crate::{ini::IniName, object::ObjectTypeClass, text::IDs};
 
 /// Smudges are enumerated here. Smudges are transparent icons that are
 /// drawn over the underlying terrain in order to give the effect of
@@ -57,6 +57,12 @@ pub struct SmudgeTypeClass {
 
     /// Is this overlay used as the attached road piece for buildings (bib)?
     IsBib: bool,
+}
+
+impl IniName for SmudgeTypeClass {
+    fn INI_Name() -> &'static str {
+        "SMUDGE"
+    }
 }
 
 impl SmudgeTypeClass {
