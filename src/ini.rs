@@ -8,6 +8,6 @@ pub trait IniName {
 }
 
 pub struct IniProfile {
-    pub ini: Ini,
+    pub ini: ini::Ini,
     pub root: String,
 }
