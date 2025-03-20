@@ -5,6 +5,7 @@ use crate::text::IDs;
 /// This is the abstract type class. It holds information common to all
 /// objects that might exist. This contains the name of
 /// the object type.
+#[derive(Default)]
 pub struct AbstractTypeClass {
     /// This is the internal control name of the object. This name does
     /// not change regardless of language specified. This is the name

@@ -50,4 +50,8 @@ impl<T> TFixedIHeapClass<T> {
     pub fn is_empty(&self) -> bool {
         self.0.is_empty()
     }
+
+    pub fn last_mut(&mut self) -> Option<&mut T> {
+        self.0.last_mut()
+    }
 }

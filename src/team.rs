@@ -1,7 +1,7 @@
 #![allow(dead_code, non_camel_case_types, non_snake_case, non_upper_case_globals, unused_variables)]
 
 use crate::{
-    abstract_::AbstractTypeClass, house::HousesType, ini::IniName, techno::TechnoTypeClass,
+    abstract_::AbstractTypeClass, heap::{InsertError, TFixedIHeapClass}, house::HousesType, ini::IniName, techno::TechnoTypeClass
 };
 
 /// TeamMissionType: the various missions that a team can have.
@@ -30,6 +30,7 @@ pub struct TeamMissionStruct {
     Argument: i32,
 }
 
+#[derive(Default)]
 pub struct TeamTypeClass {
     abstract_type_class: AbstractTypeClass,
 
@@ -84,7 +85,7 @@ pub struct TeamTypeClass {
     Fear: u8,
 
     /// House the team belongs to
-    House: HousesType,
+    House: Option<HousesType>,
 
     /// The mission list for this team
     MissionCount: i32,
@@ -103,5 +104,22 @@ pub struct TeamTypeClass {
 impl IniName for TeamTypeClass {
     fn INI_Name() -> &'static str {
         "TeamTypes"
+    }
+}
+
+pub enum NewError {
+    NewFailedDueToCapacity,
+}
+
+impl TeamTypeClass {
+    /// Creates a new instance of TeamTypeClass in Scenario
+    pub fn try_new(team_types: &mut TFixedIHeapClass<TeamTypeClass>) -> Result<&mut Self, NewError>{
+        team_types.try_push(TeamTypeClass{
+            IsActive: true,
+            ..Default::default()
+        }).map_err(|err| match err {
+            InsertError::ReachedCapacity => NewError::NewFailedDueToCapacity,
+        })?;
+        Ok(team_types.last_mut().unwrap())
     }
 }

@@ -30,6 +30,7 @@ mod odata;
 mod overlay;
 mod player;
 mod rtti;
+mod scenario;
 mod sdata;
 mod smudge;
 mod speed;
