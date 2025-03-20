@@ -16,6 +16,7 @@ mod coords;
 mod direction;
 mod display;
 mod hdata;
+mod heap;
 mod house;
 mod idata;
 mod infantry;
