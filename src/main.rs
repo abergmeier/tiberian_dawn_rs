@@ -8,6 +8,7 @@ mod audio;
 mod base;
 mod bbdata;
 mod bdata;
+mod briefing;
 mod building;
 mod bullet;
 mod cdata;

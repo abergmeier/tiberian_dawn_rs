@@ -6,3 +6,8 @@ pub struct Ini<'a> {
 pub trait IniName {
     fn INI_Name() -> &'static str;
 }
+
+pub struct IniProfile {
+    pub ini: Ini,
+    pub root: String,
+}
