@@ -1,3 +1,5 @@
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
+
 pub const ICON_PIXEL_W: u8 = 24;
 pub const ICON_PIXEL_H: u8 = 24;
 pub const ICON_LEPTON_W: u16 = 256;

@@ -1,3 +1,5 @@
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
+
 use std::ops::Index;
 
 use crate::text::IDs::*;

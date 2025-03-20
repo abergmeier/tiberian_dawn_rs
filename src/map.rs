@@ -1,3 +1,5 @@
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
+
 pub const MCW: u16 = MAP_CELL_W as u16;
 
 

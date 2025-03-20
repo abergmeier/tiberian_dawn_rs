@@ -1,4 +1,5 @@
 #![allow(
+    dead_code,
     non_camel_case_types,
     non_snake_case,
     non_upper_case_globals,
@@ -106,7 +107,7 @@ pub struct TerrainTypeClass<const OCC: usize, const OVC: usize> {
 }
 
 impl<const OCC: usize, const OVC: usize> IniName for TerrainTypeClass<OCC, OVC> {
-    fn INI_Name() -> &'static str{
+    fn INI_Name() -> &'static str {
         "TERRAIN"
     }
 }

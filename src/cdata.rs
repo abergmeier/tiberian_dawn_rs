@@ -1,4 +1,4 @@
-#![allow(non_snake_case, non_upper_case_globals, unused_variables)]
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
 use crate::template::TemplateType::*;
 use crate::template::TemplateTypeClass;
@@ -42,7 +42,10 @@ const _slope1: [i8; 2] = [0, -1];
 
 const Empty: TemplateTypeClass<0> = TemplateTypeClass::new(
     TEMPLATE_CLEAR1,
-    THEATERF::WINTER.bits() | THEATERF::DESERT.bits() | THEATERF::TEMPERATE.bits() | THEATERF::JUNGLE.bits(),
+    THEATERF::WINTER.bits()
+        | THEATERF::DESERT.bits()
+        | THEATERF::TEMPERATE.bits()
+        | THEATERF::JUNGLE.bits(),
     "CLEAR1",
     TXT_CLEAR,
     LAND_CLEAR,
@@ -53,7 +56,10 @@ const Empty: TemplateTypeClass<0> = TemplateTypeClass::new(
 );
 const Clear: TemplateTypeClass<0> = TemplateTypeClass::new(
     TEMPLATE_CLEAR1,
-    THEATERF::WINTER.bits() | THEATERF::DESERT.bits() | THEATERF::TEMPERATE.bits() | THEATERF::JUNGLE.bits(),
+    THEATERF::WINTER.bits()
+        | THEATERF::DESERT.bits()
+        | THEATERF::TEMPERATE.bits()
+        | THEATERF::JUNGLE.bits(),
     "CLEAR1",
     TXT_CLEAR,
     LAND_CLEAR,

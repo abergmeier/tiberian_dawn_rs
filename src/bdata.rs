@@ -1,27 +1,18 @@
-#![allow(non_snake_case, non_upper_case_globals, unused_variables)]
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
-use crate::animation::BStateType::*;
-use crate::animation::BSTATE_COUNT;
-use crate::armor::ArmorType;
 use crate::armor::ArmorType::*;
-use crate::building;
-use crate::building::BSizeType;
 use crate::building::BSizeType::*;
 use crate::building::BuildingTypeClass;
-use crate::building::StructType;
 use crate::building::StructType::*;
 use crate::building::STRUCTF;
-use crate::coords::COORDINATE;
 use crate::coords::XYP_COORD;
 use crate::direction::*;
 use crate::display::*;
 use crate::house::HOUSEF;
 use crate::map::MAP_CELL_W;
 use crate::map::MCW;
-use crate::rtti::RTTIType;
 use crate::rtti::RTTIType::*;
-use crate::text::{self, IDs::*};
-use crate::weapon::WeaponType;
+use crate::text::IDs::*;
 use crate::weapon::WeaponType::*;
 use crate::ADVANCED;
 use crate::PATCH;

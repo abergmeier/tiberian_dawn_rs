@@ -1,30 +1,33 @@
-use crate::{abstract_::AbstractTypeClass, house::HousesType, ini::IniName, techno::TechnoTypeClass};
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
+
+use crate::{
+    abstract_::AbstractTypeClass, house::HousesType, ini::IniName, techno::TechnoTypeClass,
+};
 
 /// TeamMissionType: the various missions that a team can have.
 pub enum TeamMissionType {
-	//TMISSION_NONE=-1,
-	TMISSION_ATTACKBASE,				// Attack nearest enemy base.
-	TMISSION_ATTACKUNITS,			// Attack all enemy units.
-	TMISSION_ATTACKCIVILIANS,		// Attack all civilians
-	TMISSION_RAMPAGE,					// attack & destroy anything that's not mine
-	TMISSION_DEFENDBASE,				// Protect my base.
-//	TMISSION_HARVEST,					// stake out a Tiberium claim, defend & harvest it
-	TMISSION_MOVE,						// moves to waypoint specified.
-	TMISSION_MOVECELL,				// moves to cell # specified.
-	TMISSION_RETREAT,					// order given by superior team, for coordinating
-	TMISSION_GUARD,					// works like an infantry's guard mission
-	TMISSION_LOOP,						// loop back to start of mission list
-	TMISSION_ATTACKTARCOM,			// attack tarcom
-	TMISSION_UNLOAD,					// Unload at current location.
-	//TMISSION_COUNT,
-	//TMISSION_FIRST=0
+    //TMISSION_NONE=-1,
+    TMISSION_ATTACKBASE,      // Attack nearest enemy base.
+    TMISSION_ATTACKUNITS,     // Attack all enemy units.
+    TMISSION_ATTACKCIVILIANS, // Attack all civilians
+    TMISSION_RAMPAGE,         // attack & destroy anything that's not mine
+    TMISSION_DEFENDBASE,      // Protect my base.
+    //	TMISSION_HARVEST,					// stake out a Tiberium claim, defend & harvest it
+    TMISSION_MOVE,         // moves to waypoint specified.
+    TMISSION_MOVECELL,     // moves to cell # specified.
+    TMISSION_RETREAT,      // order given by superior team, for coordinating
+    TMISSION_GUARD,        // works like an infantry's guard mission
+    TMISSION_LOOP,         // loop back to start of mission list
+    TMISSION_ATTACKTARCOM, // attack tarcom
+    TMISSION_UNLOAD,       // Unload at current location.
+                           //TMISSION_COUNT,
+                           //TMISSION_FIRST=0
 }
 
 /// This structure contains one team mission value & its argument.
-pub struct TeamMissionStruct
-{
-	Mission: TeamMissionType,
-	Argument: i32,
+pub struct TeamMissionStruct {
+    Mission: TeamMissionType,
+    Argument: i32,
 }
 
 pub struct TeamTypeClass {
@@ -85,20 +88,20 @@ pub struct TeamTypeClass {
 
     /// The mission list for this team
     MissionCount: i32,
-    MissionList: [TeamMissionStruct; 0/*MAX_TEAM_MISSIONS*/],
+    MissionList: [TeamMissionStruct; 0],
 
     /// Number of different classes in the team
     ClassCount: u8,
 
     /// Array of object types comprising the team
-    Class: [TechnoTypeClass; 0/*MAX_TEAM_CLASSCOUNT*/],
+    Class: [TechnoTypeClass; 0],
 
     /// Desired # of each type of object comprising the team
-    DesiredNum: [u8; 0/*MAX_TEAM_CLASSCOUNT*/],
+    DesiredNum: [u8; 0],
 }
 
 impl IniName for TeamTypeClass {
-	fn INI_Name() -> &'static str {
-		"TeamTypes"
-	}
+    fn INI_Name() -> &'static str {
+        "TeamTypes"
+    }
 }

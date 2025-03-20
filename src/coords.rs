@@ -1,3 +1,5 @@
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
+
 ///	These are custom C&C specific types. The CELL is used for map coordinate
 ///	with cell resolution. The COORD type is used for map coordinates that
 ///	have a lepton resolution.

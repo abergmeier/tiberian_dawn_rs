@@ -1,4 +1,4 @@
-#![allow(non_snake_case, non_upper_case_globals, unused_variables)]
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
 use crate::animation::AnimType::*;
 use crate::animation::AnimTypeClass;

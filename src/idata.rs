@@ -1,5 +1,4 @@
-
-#![allow(non_snake_case, non_upper_case_globals, unused_variables)]
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 use strum::EnumCount;
 
 use crate::house::HOUSEF;
@@ -59,7 +58,7 @@ const E1: InfantryTypeClass = InfantryTypeClass::new(
     TXT_E1,               // Translate name number for infantry type.
     "E1",                 // INI name for infantry.
     1,                    // Build level.
-    STRUCTF::NONE.bits(),        // Building prerequisite.
+    STRUCTF::NONE.bits(), // Building prerequisite.
     false,                // Is this a female type?
     true,                 // Is a leader type?
     true,                 // Has crawling animation frames?
@@ -69,7 +68,7 @@ const E1: InfantryTypeClass = InfantryTypeClass::new(
     false,                // Can this infantry type capture a building?
     false,                // Theater specific graphic image?
     -1,                   // Number of shots it has (default).
-    MiniGunnerDos, // Ptr to minigunner 'DO' table above
+    MiniGunnerDos,        // Ptr to minigunner 'DO' table above
     2,                    // Frame of projectile launch.
     2,                    // Frame of projectile launch while prone.
     50,                   // Strength of infantry (in damage points).
@@ -132,27 +131,27 @@ const GrenadierDos: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const E2: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_E2,         // Infantry type number.
-    TXT_E2,              // Translate name number for infantry type.
-    "E2",                // INI name for infantry.
-    1,                   // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    false,               // Is this a female type?
-    true,                // Is a leader type?
-    true,                // Has crawling animation frames?
-    false,               // Is this a civlian?
-    false,               // Always use the given name for the infantry?
-    false,               // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    -1,                  // Number of shots it has (default).
-    GrenadierDos, // Ptr to grenadier DO table (above)
-    14,                  // Frame of projectile launch.
-    6,                   // Frame of projectile launch while prone.
-    50,                  // Strength of infantry (in damage points).
-    1,                   // Sight range.
-    160,                 // Cost of infantry (in credits).
-    3,                   // Scenario when they first appear.
+    INFANTRY_E2,          // Infantry type number.
+    TXT_E2,               // Translate name number for infantry type.
+    "E2",                 // INI name for infantry.
+    1,                    // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    true,                 // Is a leader type?
+    true,                 // Has crawling animation frames?
+    false,                // Is this a civlian?
+    false,                // Always use the given name for the infantry?
+    false,                // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    -1,                   // Number of shots it has (default).
+    GrenadierDos,         // Ptr to grenadier DO table (above)
+    14,                   // Frame of projectile launch.
+    6,                    // Frame of projectile launch while prone.
+    50,                   // Strength of infantry (in damage points).
+    1,                    // Sight range.
+    160,                  // Cost of infantry (in credits).
+    3,                    // Scenario when they first appear.
     80,
     10, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -208,27 +207,27 @@ const BazookaDos: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const E3: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_E3,       // Infantry type number.
-    TXT_E3,            // Translate name number for infantry type.
-    "E3",              // INI name for infantry.
-    2,                 // Build level.
-    STRUCTF::NONE.bits(),     // Building prerequisite.
-    false,             // Is this a female type?
-    true,              // Is a leader type?
-    true,              // Has crawling animation frames?
-    false,             // Is this a civlian?
-    false,             // Always use the given name for the infantry?
-    false,             // Is this a "fraidycat" run-away type infantry?
-    false,             // Can this infantry type capture a building?
-    false,             // Theater specific graphic image?
-    -1,                // Number of shots it has (default).
-    BazookaDos, // Ptr to DO table (above)
-    3,                 // Frame of projectile launch.
-    3,                 // Frame of projectile launch while prone.
-    25,                // Strength of infantry (in damage points).
-    2,                 // Sight range.
-    300,               // Cost of infantry (in credits).
-    3,                 // Scenario when they first appear.
+    INFANTRY_E3,          // Infantry type number.
+    TXT_E3,               // Translate name number for infantry type.
+    "E3",                 // INI name for infantry.
+    2,                    // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    true,                 // Is a leader type?
+    true,                 // Has crawling animation frames?
+    false,                // Is this a civlian?
+    false,                // Always use the given name for the infantry?
+    false,                // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    -1,                   // Number of shots it has (default).
+    BazookaDos,           // Ptr to DO table (above)
+    3,                    // Frame of projectile launch.
+    3,                    // Frame of projectile launch while prone.
+    25,                   // Strength of infantry (in damage points).
+    2,                    // Sight range.
+    300,                  // Cost of infantry (in credits).
+    3,                    // Scenario when they first appear.
     80,
     10, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -285,27 +284,27 @@ const FlamethrowerDos: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const E4: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_E4,            // Infantry type number.
-    TXT_E4,                 // Translate name number for infantry type.
-    "E4",                   // INI name for infantry.
-    1,                      // Build level.
-    STRUCTF::NONE.bits(),          // Building prerequisite.
-    false,                  // Is this a female type?
-    true,                   // Is a leader type?
-    true,                   // Has crawling animation frames?
-    false,                  // Is this a civlian?
-    false,                  // Always use the given name for the infantry?
-    false,                  // Is this a "fraidycat" run-away type infantry?
-    false,                  // Can this infantry type capture a building?
-    false,                  // Theater specific graphic image?
-    -1,                     // Number of shots it has (default).
-    FlamethrowerDos, // ptr to DO table (above)
-    2,                      // Frame of projectile launch.
-    0,                      // Frame of projectile launch while prone.
-    70,                     // Strength of infantry (in damage points).
-    1,                      // Sight range.
-    200,                    // Cost of infantry (in credits).
-    5,                      // Scenario when they first appear.
+    INFANTRY_E4,          // Infantry type number.
+    TXT_E4,               // Translate name number for infantry type.
+    "E4",                 // INI name for infantry.
+    1,                    // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    true,                 // Is a leader type?
+    true,                 // Has crawling animation frames?
+    false,                // Is this a civlian?
+    false,                // Always use the given name for the infantry?
+    false,                // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    -1,                   // Number of shots it has (default).
+    FlamethrowerDos,      // ptr to DO table (above)
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    70,                   // Strength of infantry (in damage points).
+    1,                    // Sight range.
+    200,                  // Cost of infantry (in credits).
+    5,                    // Scenario when they first appear.
     80,
     10, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -361,27 +360,27 @@ const ChemwarriorDos: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const E5: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_E5,           // Infantry type number.
-    TXT_E5,                // Translate name number for infantry type.
-    "E5",                  // INI name for infantry.
-    7,                     // Build level.
-    STRUCTF::EYE.bits(),          // Building prerequisite.
-    false,                 // Is this a female type?
-    true,                  // Is a leader type?
-    true,                  // Has crawling animation frames?
-    false,                 // Is this a civlian?
-    false,                 // Always use the given name for the infantry?
-    true,                  // Is this a "fraidycat" run-away type infantry?
-    false,                 // Can this infantry type capture a building?
-    false,                 // Theater specific graphic image?
-    -1,                    // Number of shots it has (default).
-    ChemwarriorDos, // ptr to DO table
-    2,                     // Frame of projectile launch.
-    0,                     // Frame of projectile launch while prone.
-    70,                    // Strength of infantry (in damage points).
-    1,                     // Sight range.
-    300,                   // Cost of infantry (in credits).
-    99,                    // Scenario when they first appear.
+    INFANTRY_E5,         // Infantry type number.
+    TXT_E5,              // Translate name number for infantry type.
+    "E5",                // INI name for infantry.
+    7,                   // Build level.
+    STRUCTF::EYE.bits(), // Building prerequisite.
+    false,               // Is this a female type?
+    true,                // Is a leader type?
+    true,                // Has crawling animation frames?
+    false,               // Is this a civlian?
+    false,               // Always use the given name for the infantry?
+    true,                // Is this a "fraidycat" run-away type infantry?
+    false,               // Can this infantry type capture a building?
+    false,               // Theater specific graphic image?
+    -1,                  // Number of shots it has (default).
+    ChemwarriorDos,      // ptr to DO table
+    2,                   // Frame of projectile launch.
+    0,                   // Frame of projectile launch while prone.
+    70,                  // Strength of infantry (in damage points).
+    1,                   // Sight range.
+    300,                 // Cost of infantry (in credits).
+    99,                  // Scenario when they first appear.
     80,
     10, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()|
@@ -438,27 +437,27 @@ const EngineerDos: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const E7: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_E7,        // Infantry type number.
-    TXT_E7,             // Translate name number for infantry type.
-    "E6",               // INI name for infantry.
-    3,                  // Build level.
-    STRUCTF::NONE.bits(),      // Building prerequisite.
-    false,              // Is this a female type?
-    false,              // Is a leader type?
-    false,              // Has crawling animation frames?
-    false,              // Is this a civlian?
-    false,              // Always use the given name for the infantry?
-    false,              // Is this a "fraidycat" run-away type infantry?
-    true,               // Can this infantry type capture a building?
-    false,              // Theater specific graphic image?
-    -1,                 // Number of shots it has (default).
-    EngineerDos, // ptr to DO table
-    3,                  // Frame of projectile launch.
-    3,                  // Frame of projectile launch while prone.
-    25,                 // Strength of infantry (in damage points).
-    2,                  // Sight range.
-    500,                // Cost of infantry (in credits).
-    2,                  // Scenario when they first appear.
+    INFANTRY_E7,          // Infantry type number.
+    TXT_E7,               // Translate name number for infantry type.
+    "E6",                 // INI name for infantry.
+    3,                    // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    false,                // Is this a civlian?
+    false,                // Always use the given name for the infantry?
+    false,                // Is this a "fraidycat" run-away type infantry?
+    true,                 // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    -1,                   // Number of shots it has (default).
+    EngineerDos,          // ptr to DO table
+    3,                    // Frame of projectile launch.
+    3,                    // Frame of projectile launch while prone.
+    25,                   // Strength of infantry (in damage points).
+    2,                    // Sight range.
+    500,                  // Cost of infantry (in credits).
+    2,                    // Scenario when they first appear.
     80,
     75, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -514,27 +513,27 @@ const CommandoDos: [DoInfoStruct; DoType::COUNT] = [
     DoInfoStruct::new(0, 1, 1),    //	DO_PLEAD_DEATH		// N/A
 ];
 const Commando: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_RAMBO,     // Infantry type number.
-    TXT_RAMBO,          // Translate name number for infantry type.
-    "RMBO",             // INI name for infantry.
-    7,                  // Build level.
-    STRUCTF::EYE.bits(),       // Building prerequisite.
-    false,              // Is this a female type?
-    true,               // Is a leader type?
-    true,               // Has crawling animation frames?
-    false,              // Is this a civlian?
-    false,              // Always use the given name for the infantry?
-    false,              // Is this a "fraidycat" run-away type infantry?
-    true,               // Can this infantry type capture a building?
-    false,              // Theater specific graphic image?
-    -1,                 // Number of shots it has (default).
-    CommandoDos, // ptr to DO table
-    2,                  // Frame of projectile launch.
-    2,                  // Frame of projectile launch while prone.
-    80,                 // Strength of infantry (in damage points).
-    5,                  // Sight range.
-    1000,               // Cost of infantry (in credits).
-    98,                 // Scenario when they first appear.
+    INFANTRY_RAMBO,      // Infantry type number.
+    TXT_RAMBO,           // Translate name number for infantry type.
+    "RMBO",              // INI name for infantry.
+    7,                   // Build level.
+    STRUCTF::EYE.bits(), // Building prerequisite.
+    false,               // Is this a female type?
+    true,                // Is a leader type?
+    true,                // Has crawling animation frames?
+    false,               // Is this a civlian?
+    false,               // Always use the given name for the infantry?
+    false,               // Is this a "fraidycat" run-away type infantry?
+    true,                // Can this infantry type capture a building?
+    false,               // Theater specific graphic image?
+    -1,                  // Number of shots it has (default).
+    CommandoDos,         // ptr to DO table
+    2,                   // Frame of projectile launch.
+    2,                   // Frame of projectile launch while prone.
+    80,                  // Strength of infantry (in damage points).
+    5,                   // Sight range.
+    1000,                // Cost of infantry (in credits).
+    98,                  // Scenario when they first appear.
     80,
     75, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -591,27 +590,27 @@ const CivilianDos1: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C1: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C1,         // Infantry type number.
-    TXT_C1,              // Translate name number for infantry type.
-    "C1",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    false,               // Is this a female type?
-    true,                // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    10,                  // Number of shots it has (default).
-    CivilianDos1, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    25,                  // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C1,          // Infantry type number.
+    TXT_C1,               // Translate name number for infantry type.
+    "C1",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    true,                 // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    10,                   // Number of shots it has (default).
+    CivilianDos1,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    25,                   // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -667,27 +666,27 @@ const CivilianDos2: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C2: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C2,         // Infantry type number.
-    TXT_C2,              // Translate name number for infantry type.
-    "C2",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    false,               // Is this a female type?
-    false,               // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    0,                   // Number of shots it has (default).
-    CivilianDos2, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    5,                   // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C2,          // Infantry type number.
+    TXT_C2,               // Translate name number for infantry type.
+    "C2",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    CivilianDos2,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    5,                    // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -743,27 +742,27 @@ const CivilianDos3: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C3: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C3,         // Infantry type number.
-    TXT_C3,              // Translate name number for infantry type.
-    "C3",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    true,                // Is this a female type?
-    false,               // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    0,                   // Number of shots it has (default).
-    CivilianDos3, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    5,                   // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C3,          // Infantry type number.
+    TXT_C3,               // Translate name number for infantry type.
+    "C3",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    true,                 // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    CivilianDos3,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    5,                    // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -819,27 +818,27 @@ const CivilianDos4: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C4: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C4,         // Infantry type number.
-    TXT_C4,              // Translate name number for infantry type.
-    "C4",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    true,                // Is this a female type?
-    false,               // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    0,                   // Number of shots it has (default).
-    CivilianDos4, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    5,                   // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C4,          // Infantry type number.
+    TXT_C4,               // Translate name number for infantry type.
+    "C4",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    true,                 // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    CivilianDos4,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    5,                    // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -895,27 +894,27 @@ const CivilianDos5: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C5: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C5,         // Infantry type number.
-    TXT_C5,              // Translate name number for infantry type.
-    "C5",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    false,               // Is this a female type?
-    false,               // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    0,                   // Number of shots it has (default).
-    CivilianDos5, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    5,                   // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C5,          // Infantry type number.
+    TXT_C5,               // Translate name number for infantry type.
+    "C5",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    CivilianDos5,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    5,                    // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -971,27 +970,27 @@ const CivilianDos6: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C6: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C6,         // Infantry type number.
-    TXT_C6,              // Translate name number for infantry type.
-    "C6",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    false,               // Is this a female type?
-    false,               // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    0,                   // Number of shots it has (default).
-    CivilianDos6, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    5,                   // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C6,          // Infantry type number.
+    TXT_C6,               // Translate name number for infantry type.
+    "C6",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    CivilianDos6,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    5,                    // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -1047,27 +1046,27 @@ const CivilianDos7: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C7: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C7,         // Infantry type number.
-    TXT_C7,              // Translate name number for infantry type.
-    "C7",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    false,               // Is this a female type?
-    true,                // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    10,                  // Number of shots it has (default).
-    CivilianDos7, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    5,                   // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C7,          // Infantry type number.
+    TXT_C7,               // Translate name number for infantry type.
+    "C7",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    true,                 // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    10,                   // Number of shots it has (default).
+    CivilianDos7,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    5,                    // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -1123,27 +1122,27 @@ const CivilianDos8: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C8: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C8,         // Infantry type number.
-    TXT_C8,              // Translate name number for infantry type.
-    "C8",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    false,               // Is this a female type?
-    false,               // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    0,                   // Number of shots it has (default).
-    CivilianDos8, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    5,                   // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C8,          // Infantry type number.
+    TXT_C8,               // Translate name number for infantry type.
+    "C8",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    CivilianDos8,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    5,                    // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -1199,27 +1198,27 @@ const CivilianDos9: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const C9: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C9,         // Infantry type number.
-    TXT_C9,              // Translate name number for infantry type.
-    "C9",                // INI name for infantry.
-    99,                  // Build level.
-    STRUCTF::NONE.bits(),       // Building prerequisite.
-    false,               // Is this a female type?
-    false,               // Is a leader type?
-    false,               // Has crawling animation frames?
-    true,                // Is this a civlian?
-    true,                // Always use the given name for the infantry?
-    true,                // Is this a "fraidycat" run-away type infantry?
-    false,               // Can this infantry type capture a building?
-    false,               // Theater specific graphic image?
-    0,                   // Number of shots it has (default).
-    CivilianDos9, // ptr to DO table
-    2,                   // Frame of projectile launch.
-    0,                   // Frame of projectile launch while prone.
-    5,                   // Strength of infantry (in damage points).
-    0,                   // Sight range.
-    10,                  // Cost of infantry (in credits).
-    99,                  // Scenario when they first appear.
+    INFANTRY_C9,          // Infantry type number.
+    TXT_C9,               // Translate name number for infantry type.
+    "C9",                 // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    CivilianDos9,         // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    5,                    // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -1276,27 +1275,27 @@ const NikoombaDos: [DoInfoStruct; DoType::COUNT] = [
 
 // Nikoomba
 const C10: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_C10,       // Infantry type number.
-    TXT_C10,            // Translate name number for infantry type.
-    "C10",              // INI name for infantry.
-    99,                 // Build level.
-    STRUCTF::NONE.bits(),      // Building prerequisite.
-    false,              // Is this a female type?
-    false,              // Is a leader type?
-    false,              // Has crawling animation frames?
-    true,               // Is this a civlian?
-    true,               // Always use the given name for the infantry?
-    true,               // Is this a "fraidycat" run-away type infantry?
-    false,              // Can this infantry type capture a building?
-    false,              // Theater specific graphic image?
-    0,                  // Number of shots it has (default).
-    NikoombaDos, // ptr to DO table
-    2,                  // Frame of projectile launch.
-    0,                  // Frame of projectile launch while prone.
-    50,                 // Strength of infantry (in damage points).
-    0,                  // Sight range.
-    10,                 // Cost of infantry (in credits).
-    99,                 // Scenario when they first appear.
+    INFANTRY_C10,         // Infantry type number.
+    TXT_C10,              // Translate name number for infantry type.
+    "C10",                // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    NikoombaDos,          // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    50,                   // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -1352,27 +1351,27 @@ const MoebiusDos: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const Moebius: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_MOEBIUS,  // Infantry type number.
-    TXT_MOEBIUS,       // Translate name number for infantry type.
-    "MOEBIUS",         // INI name for infantry.
-    99,                // Build level.
-    STRUCTF::NONE.bits(),     // Building prerequisite.
-    false,             // Is this a female type?
-    false,             // Is a leader type?
-    false,             // Has crawling animation frames?
-    true,              // Is this a civlian?
-    true,              // Always use the given name for the infantry?
-    true,              // Is this a "fraidycat" run-away type infantry?
-    false,             // Can this infantry type capture a building?
-    false,             // Theater specific graphic image?
-    0,                 // Number of shots it has (default).
-    MoebiusDos, // ptr to DO table
-    0,                 // Frame of projectile launch.
-    0,                 // Frame of projectile launch while prone.
-    50,                // Strength of infantry (in damage points).
-    0,                 // Sight range.
-    10,                // Cost of infantry (in credits).
-    99,                // Scenario when they first appear.
+    INFANTRY_MOEBIUS,     // Infantry type number.
+    TXT_MOEBIUS,          // Translate name number for infantry type.
+    "MOEBIUS",            // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    0,                    // Number of shots it has (default).
+    MoebiusDos,           // ptr to DO table
+    0,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    50,                   // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     10, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -1428,27 +1427,27 @@ const DelphiDos: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const Delphi: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_DELPHI,  // Infantry type number.
-    TXT_DELPHI,       // Translate name number for infantry type.
-    "DELPHI",         // INI name for infantry.
-    99,               // Build level.
-    STRUCTF::NONE.bits(),    // Building prerequisite.
-    false,            // Is this a female type?
-    false,            // Is a leader type?
-    false,            // Has crawling animation frames?
-    true,             // Is this a civlian?
-    true,             // Always use the given name for the infantry?
-    true,             // Is this a "fraidycat" run-away type infantry?
-    false,            // Can this infantry type capture a building?
-    false,            // Theater specific graphic image?
-    10,               // Number of shots it has (default).
-    DelphiDos, // ptr to DO table
-    2,                // Frame of projectile launch.
-    0,                // Frame of projectile launch while prone.
-    25,               // Strength of infantry (in damage points).
-    0,                // Sight range.
-    10,               // Cost of infantry (in credits).
-    99,               // Scenario when they first appear.
+    INFANTRY_DELPHI,      // Infantry type number.
+    TXT_DELPHI,           // Translate name number for infantry type.
+    "DELPHI",             // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    10,                   // Number of shots it has (default).
+    DelphiDos,            // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    25,                   // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     0, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()
@@ -1503,27 +1502,27 @@ const DrChanDos: [DoInfoStruct; DoType::COUNT] = [
 ];
 
 const DrChan: InfantryTypeClass = InfantryTypeClass::new(
-    INFANTRY_CHAN,    // Infantry type number.
-    TXT_CHAN,         // Translate name number for infantry type.
-    "CHAN",           // INI name for infantry.
-    99,               // Build level.
-    STRUCTF::NONE.bits(),    // Building prerequisite.
-    false,            // Is this a female type?
-    false,            // Is a leader type?
-    false,            // Has crawling animation frames?
-    true,             // Is this a civlian?
-    true,             // Always use the given name for the infantry?
-    true,             // Is this a "fraidycat" run-away type infantry?
-    false,            // Can this infantry type capture a building?
-    false,            // Theater specific graphic image?
-    10,               // Number of shots it has (default).
-    DrChanDos, // ptr to DO table
-    2,                // Frame of projectile launch.
-    0,                // Frame of projectile launch while prone.
-    25,               // Strength of infantry (in damage points).
-    0,                // Sight range.
-    10,               // Cost of infantry (in credits).
-    99,               // Scenario when they first appear.
+    INFANTRY_CHAN,        // Infantry type number.
+    TXT_CHAN,             // Translate name number for infantry type.
+    "CHAN",               // INI name for infantry.
+    99,                   // Build level.
+    STRUCTF::NONE.bits(), // Building prerequisite.
+    false,                // Is this a female type?
+    false,                // Is a leader type?
+    false,                // Has crawling animation frames?
+    true,                 // Is this a civlian?
+    true,                 // Always use the given name for the infantry?
+    true,                 // Is this a "fraidycat" run-away type infantry?
+    false,                // Can this infantry type capture a building?
+    false,                // Theater specific graphic image?
+    10,                   // Number of shots it has (default).
+    DrChanDos,            // ptr to DO table
+    2,                    // Frame of projectile launch.
+    0,                    // Frame of projectile launch while prone.
+    25,                   // Strength of infantry (in damage points).
+    0,                    // Sight range.
+    10,                   // Cost of infantry (in credits).
+    99,                   // Scenario when they first appear.
     0,
     1, // Risk/Reward of this infantry unit.
     HOUSEF::MULTI1.bits()

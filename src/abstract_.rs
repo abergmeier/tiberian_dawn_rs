@@ -1,3 +1,5 @@
+#![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
+
 use crate::text::IDs;
 
 /// This is the abstract type class. It holds information common to all

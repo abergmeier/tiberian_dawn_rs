@@ -1,11 +1,21 @@
 #![allow(
+    dead_code,
     non_camel_case_types,
     non_snake_case,
     non_upper_case_globals,
     unused_variables
 )]
 use crate::{
-    animation::AnimType, armor::ArmorType, building, house::HOUSEF, ini::IniName, mission::MissionType, speed::{MPHType, SpeedType}, techno::TechnoTypeClass, text::IDs, weapon::WeaponType
+    animation::AnimType,
+    armor::ArmorType,
+    building,
+    house::HOUSEF,
+    ini::IniName,
+    mission::MissionType,
+    speed::{MPHType, SpeedType},
+    techno::TechnoTypeClass,
+    text::IDs,
+    weapon::WeaponType,
 };
 
 /// The game units are enumerated here. These include not only traditional

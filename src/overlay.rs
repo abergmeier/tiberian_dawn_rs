@@ -1,5 +1,10 @@
-#![allow(non_camel_case_types, non_snake_case, non_upper_case_globals, unused_variables)]
-
+#![allow(
+    dead_code,
+    non_camel_case_types,
+    non_snake_case,
+    non_upper_case_globals,
+    unused_variables
+)]
 
 use crate::{ini::IniName, terrain::LandType, text::IDs};
 
@@ -7,41 +12,41 @@ use crate::{ini::IniName, terrain::LandType, text::IDs};
 /// a transparent icon. It is placed over the terrain but usually falls
 /// "under" buildings, trees, and units.
 #[repr(u8)]
-pub  enum OverlayType {
-	//OVERLAY_NONE=-1,
-	OVERLAY_CONCRETE,			// Concrete.
-	OVERLAY_SANDBAG_WALL,	// Piled sandbags.
-	OVERLAY_CYCLONE_WALL,	// Chain-link fence.
-	OVERLAY_BRICK_WALL,		// Solid concrete wall.
-	OVERLAY_BARBWIRE_WALL,	// Barbed-wire wall.
-	OVERLAY_WOOD_WALL,		// Wooden fence.
-	OVERLAY_TIBERIUM1,		// Tiberium patch.
-	OVERLAY_TIBERIUM2,		// Tiberium patch.
-	OVERLAY_TIBERIUM3,		// Tiberium patch.
-	OVERLAY_TIBERIUM4,		// Tiberium patch.
-	OVERLAY_TIBERIUM5,		// Tiberium patch.
-	OVERLAY_TIBERIUM6,		// Tiberium patch.
-	OVERLAY_TIBERIUM7,		// Tiberium patch.
-	OVERLAY_TIBERIUM8,		// Tiberium patch.
-	OVERLAY_TIBERIUM9,		// Tiberium patch.
-	OVERLAY_TIBERIUM10,		// Tiberium patch.
-	OVERLAY_TIBERIUM11,		// Tiberium patch.
-	OVERLAY_TIBERIUM12,		// Tiberium patch.
-	OVERLAY_ROAD,				// Road/concrete piece.
-	OVERLAY_SQUISH,			// Squish mark for overran infantry.
-	OVERLAY_V12,				// Haystacks
-	OVERLAY_V13,				// Haystack
-	OVERLAY_V14,				// Wheat field
-	OVERLAY_V15,				// Fallow field
-	OVERLAY_V16,				//	Corn field
-	OVERLAY_V17,				// Celery field
-	OVERLAY_V18,				// Potato field
-	OVERLAY_FLAG_SPOT,		// Flag start location.
-	OVERLAY_WOOD_CRATE,		// Wooden goodie crate.
-	OVERLAY_STEEL_CRATE,		//	Steel goodie crate.
+pub enum OverlayType {
+    //OVERLAY_NONE=-1,
+    OVERLAY_CONCRETE,      // Concrete.
+    OVERLAY_SANDBAG_WALL,  // Piled sandbags.
+    OVERLAY_CYCLONE_WALL,  // Chain-link fence.
+    OVERLAY_BRICK_WALL,    // Solid concrete wall.
+    OVERLAY_BARBWIRE_WALL, // Barbed-wire wall.
+    OVERLAY_WOOD_WALL,     // Wooden fence.
+    OVERLAY_TIBERIUM1,     // Tiberium patch.
+    OVERLAY_TIBERIUM2,     // Tiberium patch.
+    OVERLAY_TIBERIUM3,     // Tiberium patch.
+    OVERLAY_TIBERIUM4,     // Tiberium patch.
+    OVERLAY_TIBERIUM5,     // Tiberium patch.
+    OVERLAY_TIBERIUM6,     // Tiberium patch.
+    OVERLAY_TIBERIUM7,     // Tiberium patch.
+    OVERLAY_TIBERIUM8,     // Tiberium patch.
+    OVERLAY_TIBERIUM9,     // Tiberium patch.
+    OVERLAY_TIBERIUM10,    // Tiberium patch.
+    OVERLAY_TIBERIUM11,    // Tiberium patch.
+    OVERLAY_TIBERIUM12,    // Tiberium patch.
+    OVERLAY_ROAD,          // Road/concrete piece.
+    OVERLAY_SQUISH,        // Squish mark for overran infantry.
+    OVERLAY_V12,           // Haystacks
+    OVERLAY_V13,           // Haystack
+    OVERLAY_V14,           // Wheat field
+    OVERLAY_V15,           // Fallow field
+    OVERLAY_V16,           //	Corn field
+    OVERLAY_V17,           // Celery field
+    OVERLAY_V18,           // Potato field
+    OVERLAY_FLAG_SPOT,     // Flag start location.
+    OVERLAY_WOOD_CRATE,    // Wooden goodie crate.
+    OVERLAY_STEEL_CRATE,   //	Steel goodie crate.
 
-	//OVERLAY_COUNT,
-	//OVERLAY_FIRST=0
+                           //OVERLAY_COUNT,
+                           //OVERLAY_FIRST=0
 }
 
 /// This controls the overlay object types. These object types include walls

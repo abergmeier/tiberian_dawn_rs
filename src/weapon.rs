@@ -1,4 +1,5 @@
 #![allow(
+    dead_code,
     non_camel_case_types,
     non_snake_case,
     non_upper_case_globals,
@@ -106,28 +107,105 @@ impl WeaponTypeClass {
 ///bullet type				dmg,	rof,	range,	sound
 pub const Weapons: [WeaponTypeClass; WeaponType::COUNT] = [
     WeaponTypeClass::new(BULLET_SNIPER, 125, 40, 0x0580, Some(VOC_SNIPER), None), //	WEAPON_RIFLE
-    WeaponTypeClass::new(BULLET_SPREADFIRE, 25, 50, 0x0400, Some(VOC_MINI), Some(ANIM_GUN_N)), //	WEAPON_CHAIN_GUN
-    WeaponTypeClass::new(BULLET_BULLET, 1, 7, 0x01C0, Some(VOC_RIFLE), None),       //	WEAPON_PISTOL
-    WeaponTypeClass::new(BULLET_BULLET, 15, 20, 0x0200, Some(VOC_MGUN2), None),     //	WEAPON_M16
-    WeaponTypeClass::new(BULLET_TOW, 30, 60, 0x0400, Some(VOC_BAZOOKA), None),      //	WEAPON_DRAGON
-    WeaponTypeClass::new(BULLET_FLAME, 35, 50, 0x0200, Some(VOC_FLAMER1), Some(ANIM_FLAME_N)), //	WEAPON_FLAMETHROWER
-    WeaponTypeClass::new(BULLET_FLAME, 50, 50, 0x0200, Some(VOC_FLAMER1), Some(ANIM_FLAME_N)), //	WEAPON_FLAME_TONGUE
-    WeaponTypeClass::new(BULLET_CHEMSPRAY, 80, 70, 0x0200, Some(VOC_FLAMER1), Some(ANIM_CHEM_N)), //	WEAPON_CHEMSPRAY
-    WeaponTypeClass::new(BULLET_GRENADE, 50, 60, 0x0340, Some(VOC_TOSS), None), //	WEAPON_GRENADE
-    WeaponTypeClass::new(BULLET_APDS, 25, 60, 0x0400, Some(VOC_TANK2), Some(ANIM_MUZZLE_FLASH)), //	WEAPON_75MM
-    WeaponTypeClass::new(BULLET_APDS, 30, 50, 0x04C0, Some(VOC_TANK3), Some(ANIM_MUZZLE_FLASH)), //	WEAPON_105MM
-    WeaponTypeClass::new(BULLET_APDS, 40, 80, 0x04C0, Some(VOC_TANK4), Some(ANIM_MUZZLE_FLASH)), //	WEAPON_120MM
-    WeaponTypeClass::new(BULLET_APDS, 40, 60, 0x0600, Some(VOC_TANK4), Some(ANIM_MUZZLE_FLASH)), //	WEAPON_TURRET_GUN
+    WeaponTypeClass::new(
+        BULLET_SPREADFIRE,
+        25,
+        50,
+        0x0400,
+        Some(VOC_MINI),
+        Some(ANIM_GUN_N),
+    ), //	WEAPON_CHAIN_GUN
+    WeaponTypeClass::new(BULLET_BULLET, 1, 7, 0x01C0, Some(VOC_RIFLE), None),     //	WEAPON_PISTOL
+    WeaponTypeClass::new(BULLET_BULLET, 15, 20, 0x0200, Some(VOC_MGUN2), None),   //	WEAPON_M16
+    WeaponTypeClass::new(BULLET_TOW, 30, 60, 0x0400, Some(VOC_BAZOOKA), None),    //	WEAPON_DRAGON
+    WeaponTypeClass::new(
+        BULLET_FLAME,
+        35,
+        50,
+        0x0200,
+        Some(VOC_FLAMER1),
+        Some(ANIM_FLAME_N),
+    ), //	WEAPON_FLAMETHROWER
+    WeaponTypeClass::new(
+        BULLET_FLAME,
+        50,
+        50,
+        0x0200,
+        Some(VOC_FLAMER1),
+        Some(ANIM_FLAME_N),
+    ), //	WEAPON_FLAME_TONGUE
+    WeaponTypeClass::new(
+        BULLET_CHEMSPRAY,
+        80,
+        70,
+        0x0200,
+        Some(VOC_FLAMER1),
+        Some(ANIM_CHEM_N),
+    ), //	WEAPON_CHEMSPRAY
+    WeaponTypeClass::new(BULLET_GRENADE, 50, 60, 0x0340, Some(VOC_TOSS), None),   //	WEAPON_GRENADE
+    WeaponTypeClass::new(
+        BULLET_APDS,
+        25,
+        60,
+        0x0400,
+        Some(VOC_TANK2),
+        Some(ANIM_MUZZLE_FLASH),
+    ), //	WEAPON_75MM
+    WeaponTypeClass::new(
+        BULLET_APDS,
+        30,
+        50,
+        0x04C0,
+        Some(VOC_TANK3),
+        Some(ANIM_MUZZLE_FLASH),
+    ), //	WEAPON_105MM
+    WeaponTypeClass::new(
+        BULLET_APDS,
+        40,
+        80,
+        0x04C0,
+        Some(VOC_TANK4),
+        Some(ANIM_MUZZLE_FLASH),
+    ), //	WEAPON_120MM
+    WeaponTypeClass::new(
+        BULLET_APDS,
+        40,
+        60,
+        0x0600,
+        Some(VOC_TANK4),
+        Some(ANIM_MUZZLE_FLASH),
+    ), //	WEAPON_TURRET_GUN
     WeaponTypeClass::new(BULLET_SSM, 75, 80, 0x0500, Some(VOC_ROCKET1), None), //	WEAPON_MAMMOTH_TUSK
     WeaponTypeClass::new(BULLET_SSM2, 75, 80, 0x0600, Some(VOC_ROCKET1), None), //	WEAPON_MLRS
-    WeaponTypeClass::new(BULLET_HE, 150, 65, 0x0600, Some(VOC_TANK1), Some(ANIM_MUZZLE_FLASH)), //	WEAPON_155MM
-    WeaponTypeClass::new(BULLET_BULLET, 15, 30, 0x0400, Some(VOC_MGUN11), Some(ANIM_GUN_N)), //	WEAPON_M60MG
+    WeaponTypeClass::new(
+        BULLET_HE,
+        150,
+        65,
+        0x0600,
+        Some(VOC_TANK1),
+        Some(ANIM_MUZZLE_FLASH),
+    ), //	WEAPON_155MM
+    WeaponTypeClass::new(
+        BULLET_BULLET,
+        15,
+        30,
+        0x0400,
+        Some(VOC_MGUN11),
+        Some(ANIM_GUN_N),
+    ), //	WEAPON_M60MG
     WeaponTypeClass::new(BULLET_SSM, 60, 35, 0x0780, Some(VOC_ROCKET2), None), //	WEAPON_TOMAHAWK
     WeaponTypeClass::new(BULLET_SSM, 60, 40, 0x0680, Some(VOC_ROCKET2), None), //	WEAPON_TOW_TWO
-    WeaponTypeClass::new(BULLET_NAPALM, 100, 20, 0x0480, None, None), //	WEAPON_NAPALM
+    WeaponTypeClass::new(BULLET_NAPALM, 100, 20, 0x0480, None, None),          //	WEAPON_NAPALM
     WeaponTypeClass::new(BULLET_LASER, 200, 90, 0x0780, Some(VOC_LASER), None), //	WEAPON_OBELISK_LASER
     WeaponTypeClass::new(BULLET_SAM, 50, 50, 0x0780, Some(VOC_ROCKET2), None),  //	WEAPON_NIKE
-    WeaponTypeClass::new(BULLET_HONEST_JOHN, 100, 200, 0x0A00, Some(VOC_ROCKET1), None), //	WEAPON_HONEST_JOHN
+    WeaponTypeClass::new(
+        BULLET_HONEST_JOHN,
+        100,
+        200,
+        0x0A00,
+        Some(VOC_ROCKET1),
+        None,
+    ), //	WEAPON_HONEST_JOHN
     WeaponTypeClass::new(BULLET_HEADBUTT, 100, 30, 0x0180, Some(VOC_DINOATK1), None), // WEAPON_STEG
     WeaponTypeClass::new(BULLET_TREXBITE, 155, 30, 0x0180, Some(VOC_DINOATK1), None), // WEAPON_TREX
 ];

@@ -1,4 +1,5 @@
 #![allow(
+    dead_code,
     non_camel_case_types,
     non_snake_case,
     non_upper_case_globals,
@@ -6,7 +7,8 @@
 )]
 
 use crate::{
-    armor::ArmorType, building::STRUCTF, ini::IniName, mission::MissionType, speed::MPHType, techno::TechnoTypeClass, text::IDs, weapon::WeaponType
+    armor::ArmorType, building::STRUCTF, ini::IniName, mission::MissionType, speed::MPHType,
+    techno::TechnoTypeClass, text::IDs, weapon::WeaponType,
 };
 
 ///	The variuos aircraft types are enumerated here. These include helicopters
