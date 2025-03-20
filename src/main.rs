@@ -23,6 +23,7 @@ mod infantry;
 mod ini;
 mod map;
 mod mission;
+mod movie;
 mod object;
 mod odata;
 mod overlay;
