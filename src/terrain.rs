@@ -11,7 +11,7 @@ use crate::coords::COORDINATE;
 use crate::ini::IniName;
 use crate::object::ObjectTypeClass;
 use crate::text::IDs;
-use crate::theater::{self, THEATERF};
+use crate::theater::THEATERF;
 
 /// Terrain can be of these different classes. At any point in the game
 /// a particular piece of ground must fall under one of these classifications.
