@@ -5,6 +5,8 @@
     non_upper_case_globals,
     unused_variables
 )]
+use crate::abstract_::LookupByInternalControlName;
+use crate::abstract_::MatchesInternalControlName;
 use crate::animation::AnimType::*;
 use crate::armor::ArmorType::*;
 use crate::building::STRUCTF;
@@ -13,10 +15,13 @@ use crate::mission::MissionType::*;
 use crate::speed::MPHType::*;
 use crate::speed::SpeedType::*;
 use crate::text::IDs::*;
+use crate::unit::UnitType;
 use crate::unit::UnitType::*;
 use crate::unit::UnitTypeClass;
 use crate::weapon::WeaponType::*;
 use crate::ADVANCED;
+use strum::EnumCount;
+use strum::IntoEnumIterator;
 
 // Visceroid
 const UnitVisceroid: UnitTypeClass = UnitTypeClass::new(
@@ -1299,3 +1304,54 @@ const UnitSteg: UnitTypeClass = UnitTypeClass::new(
     0,             // Turret center offset along body centerline.
     MISSION_GUARD, // ORDERS:		Default order to give new unit.
 );
+
+/// This is the array of pointers to the static data associated with each
+/// vehicle type.
+const BORROWS: [&UnitTypeClass; UnitType::COUNT] = [
+    &UnitHTank,     //	UNIT_HTANK
+    &UnitMTank,     //	UNIT_MTANK
+    &UnitLTank,     //	UNIT_LTANK
+    &UnitSTank,     //	UNIT_STANK
+    &UnitFTank,     //	UNIT_FTANK
+    &UnitVisceroid, // UNIT_VICE
+    &UnitAPC,       //	UNIT_APC
+    &UnitMLRS,      //	UNIT_MLRS
+    &UnitJeep,      //	UNIT_JEEP
+    &UnitBuggy,     //	UNIT_BUGGY
+    &UnitHarvester, //	UNIT_HARVESTER
+    &UnitArty,      //	UNIT_ARTY
+    &UnitSAM,       //	UNIT_MSAM
+    &UnitHover,     //	UNIT_HOVER
+    &UnitMHQ,       //	UNIT_MHQ
+    &UnitGunBoat,   //	UNIT_GUNBOAT
+    &UnitMCV,       // UNIT_MCV
+    &UnitBike,      // UNIT_BIKE
+    &UnitTric,      // UNIT_TRIC
+    &UnitTrex,      // UNIT_TREX
+    &UnitRapt,      // UNIT_RAPT
+    &UnitSteg,      // UNIT_STEG
+];
+
+impl LookupByInternalControlName for UnitTypeClass {
+    type TypeEnum = UnitType;
+
+    /// Fetch class type from specified name.
+    /// This routine converts an ASCII representation of a unit class and
+    /// converts it into a real unit class number.
+    ///
+    /// Was From_Name in C++ code.
+    fn lookup_type_enum_variant_by_internal_control_name(name: &str) -> Option<Self::TypeEnum> {
+        for classid in Self::TypeEnum::iter() {
+            if BORROWS[classid as usize].matches_internal_control_name(name) {
+                return Some(classid);
+            }
+        }
+        None
+    }
+}
+
+impl UnitTypeClass {
+    pub const fn As_Reference(unit_type: UnitType) -> &'static Self {
+        BORROWS[unit_type as usize]
+    }
+}

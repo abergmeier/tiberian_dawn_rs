@@ -1,8 +1,12 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
-use strum::EnumCount;
+use strum::{EnumCount, IntoEnumIterator};
 
+use crate::abstract_::{LookupByInternalControlName, MatchesInternalControlName};
 use crate::house::HOUSEF;
-use crate::infantry::{DoInfoStruct, DoType, InfantryType::*};
+use crate::infantry::{
+    DoInfoStruct, DoType,
+    InfantryType::{self, *},
+};
 use crate::speed::MPHType::*;
 use crate::text::IDs::*;
 use crate::weapon::WeaponType::*;
@@ -1538,3 +1542,38 @@ const DrChan: InfantryTypeClass = InfantryTypeClass::new(
     None,
     MPH_SLOW_ISH,
 );
+
+/// This is the array of classes to the static data associated with each
+///	infantry type.
+const BORROWS: [&InfantryTypeClass; InfantryType::COUNT] = [
+    &E1, &E2, &E3, &E4, &E5, //	&E6,
+    &E7, &Commando, &C1, &C2, &C3, &C4, &C5, &C6, &C7, &C8, &C9, &C10, &Moebius, &Delphi, &DrChan,
+];
+
+impl LookupByInternalControlName for InfantryTypeClass {
+    type TypeEnum = InfantryType;
+
+    /// Converts an ASCII name into an infantry type enum variant/number.
+    /// This routine is used to convert the infantry ASCII name as specified into an infantry
+    /// type number. This is called from the INI reader routine in the process if creating the
+    /// infantry objects needed for the scenario.
+    ///
+    /// Returns with the infantry type number that corresponds to the infantry ASCII name
+    /// specified. If no match could be found, then None is returned.
+    ///
+    /// Was From_Name in C++ code.
+    fn lookup_type_enum_variant_by_internal_control_name(name: &str) -> Option<Self::TypeEnum> {
+        for classid in Self::TypeEnum::iter() {
+            if BORROWS[classid as usize].matches_internal_control_name(name) {
+                return Some(classid);
+            }
+        }
+        None
+    }
+}
+
+impl InfantryTypeClass {
+    pub const fn As_Reference(infantry_type: InfantryType) -> &'static Self {
+        BORROWS[infantry_type as usize]
+    }
+}

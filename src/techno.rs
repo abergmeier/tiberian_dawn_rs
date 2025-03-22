@@ -1,12 +1,7 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
 use crate::{
-    armor::ArmorType,
-    building::STRUCTF,
-    object::ObjectTypeClass,
-    speed::MPHType,
-    text::IDs,
-    weapon::{WeaponType, Weapons},
+    abstract_::MatchesInternalControlName, armor::ArmorType, building::STRUCTF, object::ObjectTypeClass, speed::MPHType, text::IDs, weapon::{WeaponType, Weapons}
 };
 
 /// This class is the common data for all objects that can be owned, produced,
@@ -108,6 +103,12 @@ pub struct TechnoTypeClass {
     /// These are the weapons that this techno object is armed with.
     Primary: Option<WeaponType>,
     Secondary: Option<WeaponType>,
+}
+
+impl MatchesInternalControlName for TechnoTypeClass {
+    fn matches_internal_control_name(&self, name: &str) -> bool {
+        self.object_type_class.matches_internal_control_name(name)
+    }
 }
 
 impl TechnoTypeClass {

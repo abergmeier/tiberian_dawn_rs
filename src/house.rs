@@ -7,11 +7,13 @@
 )]
 
 use bitflags::bitflags;
+use strum_macros::{EnumCount, EnumIter};
 
-use crate::{player::PlayerColorType, text::IDs};
+use crate::{abstract_::MatchesInternalControlName, player::PlayerColorType, text::IDs};
 
 ///	The houses that can be played are listed here. Each has their own
 ///	personality and strengths.
+#[derive(Copy, Clone, EnumCount, EnumIter)]
 #[repr(u8)]
 pub enum HousesType {
     //HOUSE_NONE=-1,
@@ -88,6 +90,12 @@ pub struct HouseTypeClass {
     /// serves a similar purpose as the "Suffix" element, but is only one
     /// character long.
     Prefix: char,
+}
+
+impl MatchesInternalControlName for HouseTypeClass {
+    fn matches_internal_control_name(&self, other_internal_control_name: &str) -> bool {
+        self.IniName == other_internal_control_name
+    }
 }
 
 impl HouseTypeClass {
