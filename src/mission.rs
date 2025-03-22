@@ -6,9 +6,12 @@
     unused_variables
 )]
 
+use strum_macros::{EnumCount, EnumIter};
+
 ///	These missions enumerate the various state machines that can apply to
 ///	a game object. Only one of these state machines is active at any one
 ///	time.
+#[derive(Clone, Copy, Debug, EnumCount, EnumIter, PartialEq)]
 #[repr(u8)]
 pub enum MissionType {
     //MISSION_NONE=-1,

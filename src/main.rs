@@ -23,6 +23,7 @@ mod idata;
 mod infantry;
 mod ini;
 mod map;
+mod mdata;
 mod mission;
 mod movie;
 mod object;
@@ -43,10 +44,14 @@ mod text;
 mod thdata;
 mod theater;
 mod theme;
+mod tmdata;
 mod trigger;
 mod udata;
 mod unit;
 mod weapon;
+
+mod mdata_test;
+mod tmdata_test;
 
 const ADVANCED: bool = false;
 const PATCH: bool = false;
