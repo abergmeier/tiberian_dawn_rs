@@ -1,6 +1,13 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
 use crate::text::IDs;
+pub trait LookupByName {
+    type TypeEnum : Copy;
+
+    fn lookup_type_enum_variant_by_name(
+        name: &str,
+    ) -> Option<Self::TypeEnum>;
+}
 
 /// This is the abstract type class. It holds information common to all
 /// objects that might exist. This contains the name of

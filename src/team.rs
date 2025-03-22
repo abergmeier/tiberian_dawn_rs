@@ -1,10 +1,12 @@
 #![allow(dead_code, non_camel_case_types, non_snake_case, non_upper_case_globals, unused_variables)]
+use strum_macros::{EnumCount, EnumIter};
 
 use crate::{
     abstract_::AbstractTypeClass, heap::{InsertError, TFixedIHeapClass}, house::HousesType, ini::IniName, techno::TechnoTypeClass
 };
 
 /// TeamMissionType: the various missions that a team can have.
+#[derive(Clone, Copy, Debug, EnumCount, EnumIter, PartialEq)]
 pub enum TeamMissionType {
     //TMISSION_NONE=-1,
     TMISSION_ATTACKBASE,      // Attack nearest enemy base.
