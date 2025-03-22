@@ -1,5 +1,8 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
+use crate::abstract_::LookupByInternalControlName;
+use crate::abstract_::MatchesInternalControlName;
+use crate::aircraft::AircraftType;
 use crate::aircraft::AircraftType::*;
 use crate::aircraft::AircraftTypeClass;
 use crate::armor::ArmorType::*;
@@ -9,6 +12,8 @@ use crate::mission::MissionType::*;
 use crate::speed::MPHType::*;
 use crate::text::IDs::*;
 use crate::weapon::WeaponType::*;
+use strum::EnumCount;
+use strum::IntoEnumIterator;
 
 // A-10 attack plane
 const AttackPlane: AircraftTypeClass = AircraftTypeClass::new(
@@ -247,3 +252,37 @@ const CargoPlane: AircraftTypeClass = AircraftTypeClass::new(
     5,              // Rate of turn.
     MISSION_HUNT,   // Default mission for aircraft.
 );
+
+pub const BORROWS: [&AircraftTypeClass; AircraftType::COUNT] = [
+    &TransportHeli,
+    &AttackPlane,
+    &AttackHeli,
+    &CargoPlane,
+    &OrcaHeli,
+];
+
+impl LookupByInternalControlName for AircraftTypeClass {
+    type TypeEnum = AircraftType;
+
+    ///Converts an ASCII name into an aircraft type number.
+    /// This routine is used to convert an ASCII representation of an aircraft into the
+    /// matching aircraft type number. This is used by the scenario INI reader code.
+    ///
+    /// Was From_Name in C++ code.
+    fn lookup_type_enum_variant_by_internal_control_name(
+        internal_control_name: &str,
+    ) -> Option<Self::TypeEnum> {
+        for classid in Self::TypeEnum::iter() {
+            if BORROWS[classid as usize].matches_internal_control_name(internal_control_name) {
+                return Some(classid);
+            }
+        }
+        None
+    }
+}
+
+impl AircraftTypeClass {
+    pub const fn As_Reference(aircraft_type: AircraftType) -> &'static Self {
+        BORROWS[aircraft_type as usize]
+    }
+}

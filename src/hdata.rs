@@ -1,10 +1,15 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
+use crate::abstract_::LookupByInternalControlName;
+use crate::abstract_::MatchesInternalControlName;
 use crate::color::*;
 use crate::house::HouseTypeClass;
+use crate::house::HousesType;
 use crate::house::HousesType::*;
 use crate::player::PlayerColorType::*;
 use crate::text::IDs::*;
+use strum::EnumCount;
+use strum::IntoEnumIterator;
 
 /// These are the colors used to identify the various owners.
 
@@ -144,3 +149,31 @@ const HouseMulti6: HouseTypeClass = HouseTypeClass::new(
     RemapRed,             // Default remap table.
     'M',                  // VOICE:		Voice prefix character.
 );
+
+const BORROWS: [&HouseTypeClass; HousesType::COUNT] = [
+    &HouseGood,
+    &HouseBad,
+    &HouseCivilian,
+    &HouseJP,
+    &HouseMulti1,
+    &HouseMulti2,
+    &HouseMulti3,
+    &HouseMulti4,
+    &HouseMulti5,
+    &HouseMulti6,
+];
+
+impl LookupByInternalControlName for HouseTypeClass {
+    type TypeEnum = HousesType;
+
+    fn lookup_type_enum_variant_by_internal_control_name(
+        internal_control_name: &str,
+    ) -> Option<Self::TypeEnum> {
+        for classid in Self::TypeEnum::iter() {
+            if BORROWS[classid as usize].matches_internal_control_name(internal_control_name) {
+                return Some(classid);
+            }
+        }
+        None
+    }
+}

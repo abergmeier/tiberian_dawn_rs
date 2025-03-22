@@ -6,13 +6,17 @@
     unused_variables
 )]
 
+use strum_macros::{EnumCount, EnumIter};
+
 use crate::{
-    armor::ArmorType, building::STRUCTF, ini::IniName, mission::MissionType, speed::MPHType,
-    techno::TechnoTypeClass, text::IDs, weapon::WeaponType,
+    abstract_::MatchesInternalControlName, armor::ArmorType, building::STRUCTF, ini::IniName,
+    mission::MissionType, speed::MPHType, techno::TechnoTypeClass, text::IDs, weapon::WeaponType,
 };
 
 ///	The variuos aircraft types are enumerated here. These include helicopters
 ///	as well as traditional aircraft.
+#[derive(Clone, Copy, EnumCount, EnumIter)]
+#[repr(u8)]
 pub enum AircraftType {
     AIRCRAFT_TRANSPORT,  // Transport helicopter.
     AIRCRAFT_A10,        // Ground attack plane.
@@ -137,5 +141,11 @@ impl AircraftTypeClass {
             ROT: rot,
             Mission: deforder,
         }
+    }
+}
+impl MatchesInternalControlName for AircraftTypeClass {
+    fn matches_internal_control_name(&self, other_internal_control_name: &str) -> bool {
+        self.techno_type_class
+            .matches_internal_control_name(other_internal_control_name)
     }
 }

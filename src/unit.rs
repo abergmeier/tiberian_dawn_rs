@@ -5,7 +5,10 @@
     non_upper_case_globals,
     unused_variables
 )]
+use strum_macros::{EnumCount, EnumIter};
+
 use crate::{
+    abstract_::MatchesInternalControlName,
     animation::AnimType,
     armor::ArmorType,
     building,
@@ -20,6 +23,7 @@ use crate::{
 
 /// The game units are enumerated here. These include not only traditional
 /// vehicles, but also hovercraft and gunboats.
+#[derive(Clone, Copy, EnumCount, EnumIter)]
 #[repr(u8)]
 pub enum UnitType {
     //UNIT_NONE=-1,
@@ -258,5 +262,12 @@ impl UnitTypeClass {
             Type: type_,
             MaxSize: 0,
         }
+    }
+}
+
+impl MatchesInternalControlName for UnitTypeClass {
+    fn matches_internal_control_name(&self, other_internal_control_name: &str) -> bool {
+        self.techno_type_class
+            .matches_internal_control_name(other_internal_control_name)
     }
 }

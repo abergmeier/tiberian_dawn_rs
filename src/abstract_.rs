@@ -1,12 +1,25 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
-use crate::text::IDs;
-pub trait LookupByName {
-    type TypeEnum : Copy;
+use std::iter::zip;
 
-    fn lookup_type_enum_variant_by_name(
-        name: &str,
+use crate::text::IDs;
+
+pub trait MatchesInternalControlName {
+    fn matches_internal_control_name(&self, other_internal_control_name: &str) -> bool;
+}
+
+pub trait LookupByInternalControlName: MatchesInternalControlName {
+    type TypeEnum: Copy;
+
+    fn lookup_type_enum_variant_by_internal_control_name(
+        internal_control_name: &str,
     ) -> Option<Self::TypeEnum>;
+}
+
+pub trait LookupByName {
+    type TypeEnum: Copy;
+
+    fn lookup_type_enum_variant_by_name(name: &str) -> Option<Self::TypeEnum>;
 }
 
 /// This is the abstract type class. It holds information common to all
@@ -18,13 +31,24 @@ pub struct AbstractTypeClass {
     /// not change regardless of language specified. This is the name
     /// used in scenario control files and for other text based unique
     /// identification purposes.
-    IniName: [char; 9],
+    pub IniName: [char; 9],
 
     /// The translated (language specific) text name number of this object.
     /// This number is used to fetch the object's name from the language
     /// text file. Whenever the name of the object needs to be displayed,
     /// this is used to determine the text string.
     Name: Option<IDs>,
+}
+
+impl MatchesInternalControlName for AbstractTypeClass {
+    fn matches_internal_control_name(&self, other_internal_control_name: &str) -> bool {
+        for (lhs, rhs) in zip(self.IniName.iter(), other_internal_control_name.bytes()) {
+            if *lhs != (rhs as char) {
+                return false;
+            }
+        }
+        true
+    }
 }
 
 impl AbstractTypeClass {

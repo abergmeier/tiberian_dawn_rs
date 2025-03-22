@@ -9,16 +9,18 @@
 use std::ops::Index;
 
 use crate::{
+    abstract_::MatchesInternalControlName,
     building::{self},
     techno::TechnoTypeClass,
 };
 use strum::EnumCount;
-use strum_macros::EnumCount;
+use strum_macros::{EnumCount, EnumIter};
 
 use crate::{speed::MPHType, text::IDs, weapon::WeaponType};
 
 ///	This specifies the infantry in the game. The "E" designation is
 ///	similar to the army classification of enlisted soldiers.
+#[derive(Clone, Copy, Debug, EnumCount, EnumIter)]
 pub enum InfantryType {
     //INFANTRY_NONE=-1,
     INFANTRY_E1,    // Mini-gun armed.
@@ -152,6 +154,12 @@ impl DoInfoStruct {
             Count: count,
             Jump: jump,
         }
+    }
+}
+
+impl MatchesInternalControlName for InfantryTypeClass {
+    fn matches_internal_control_name(&self, name: &str) -> bool {
+        self.techno_type_class.matches_internal_control_name(name)
     }
 }
 
