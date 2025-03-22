@@ -1,6 +1,10 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
-use crate::{abstract_::{AbstractTypeClass, MatchesInternalControlName}, armor::ArmorType, text::IDs};
+use crate::{
+    abstract_::{AbstractTypeClass, MatchesInternalControlName},
+    armor::ArmorType,
+    text::IDs,
+};
 
 /// This the the common base class of game objects. Since these values
 /// represent the unchanging object TYPES, this data is initialized at game
@@ -62,7 +66,8 @@ pub struct ObjectTypeClass {
 
 impl MatchesInternalControlName for ObjectTypeClass {
     fn matches_internal_control_name(&self, other_internal_control_name: &str) -> bool {
-        self.abstract_type_class.matches_internal_control_name(other_internal_control_name)
+        self.abstract_type_class
+            .matches_internal_control_name(other_internal_control_name)
     }
 }
 

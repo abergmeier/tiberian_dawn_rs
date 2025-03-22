@@ -1,10 +1,9 @@
 use crate::ini::IniName;
 
-pub struct TriggerClass {
-}
+pub struct TriggerClass {}
 
 impl IniName for TriggerClass {
-    fn INI_Name() -> &'static str{
+    fn INI_Name() -> &'static str {
         "Triggers"
     }
 }
