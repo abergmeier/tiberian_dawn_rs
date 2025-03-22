@@ -1,8 +1,20 @@
-#![allow(dead_code, non_camel_case_types, non_snake_case, non_upper_case_globals, unused_variables)]
+#![allow(
+    dead_code,
+    non_camel_case_types,
+    non_snake_case,
+    non_upper_case_globals,
+    unused_variables
+)]
 use strum_macros::{EnumCount, EnumIter};
 
 use crate::{
-    abstract_::AbstractTypeClass, heap::{InsertError, TFixedIHeapClass}, house::HousesType, ini::IniName, techno::TechnoTypeClass
+    abstract_::AbstractTypeClass,
+    aircraft::AircraftTypeClass,
+    heap::{InsertError, TFixedIHeapClass},
+    house::HousesType,
+    infantry::InfantryTypeClass,
+    ini::IniName,
+    unit::UnitTypeClass,
 };
 
 /// TeamMissionType: the various missions that a team can have.
@@ -27,10 +39,27 @@ pub enum TeamMissionType {
 }
 
 /// This structure contains one team mission value & its argument.
+#[derive(Default)]
 pub struct TeamMissionStruct {
-    Mission: TeamMissionType,
+    Mission: Option<TeamMissionType>,
     Argument: i32,
 }
+
+enum TechnoTypeClasses {
+    None,
+    Aircraft(AircraftTypeClass),
+    Infantry(InfantryTypeClass),
+    Unit(UnitTypeClass),
+}
+
+impl Default for TechnoTypeClasses {
+    fn default() -> Self {
+        Self::None
+    }
+}
+
+const MAX_TEAM_CLASSCOUNT: usize = 5;
+const MAX_TEAM_MISSIONS: usize = 20;
 
 #[derive(Default)]
 pub struct TeamTypeClass {
@@ -91,16 +120,16 @@ pub struct TeamTypeClass {
 
     /// The mission list for this team
     MissionCount: i32,
-    MissionList: [TeamMissionStruct; 0],
+    MissionList: [TeamMissionStruct; MAX_TEAM_MISSIONS],
 
     /// Number of different classes in the team
     ClassCount: u8,
 
     /// Array of object types comprising the team
-    Class: [TechnoTypeClass; 0],
+    Class: [TechnoTypeClasses; MAX_TEAM_CLASSCOUNT],
 
     /// Desired # of each type of object comprising the team
-    DesiredNum: [u8; 0],
+    DesiredNum: [u8; MAX_TEAM_CLASSCOUNT],
 }
 
 impl IniName for TeamTypeClass {
@@ -115,13 +144,17 @@ pub enum NewError {
 
 impl TeamTypeClass {
     /// Creates a new instance of TeamTypeClass in Scenario
-    pub fn try_new(team_types: &mut TFixedIHeapClass<TeamTypeClass>) -> Result<&mut Self, NewError>{
-        team_types.try_push(TeamTypeClass{
-            IsActive: true,
-            ..Default::default()
-        }).map_err(|err| match err {
-            InsertError::ReachedCapacity => NewError::NewFailedDueToCapacity,
-        })?;
+    pub fn try_new(
+        team_types: &mut TFixedIHeapClass<TeamTypeClass>,
+    ) -> Result<&mut Self, NewError> {
+        team_types
+            .try_push(TeamTypeClass {
+                IsActive: true,
+                ..Default::default()
+            })
+            .map_err(|err| match err {
+                InsertError::ReachedCapacity => NewError::NewFailedDueToCapacity,
+            })?;
         Ok(team_types.last_mut().unwrap())
     }
 }
