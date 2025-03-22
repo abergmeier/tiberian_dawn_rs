@@ -1,8 +1,7 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
 use crate::{
-    base::BaseClass, heap::TFixedIHeapClass, movie::Movies, team::TeamTypeClass,
-    theme::ThemeClass,
+    base::BaseClass, heap::TFixedIHeapClass, movie::Movies, team::TeamTypeClass, theme::ThemeClass,
 };
 
 pub struct Scenario {

@@ -157,7 +157,6 @@ pub enum BSizeType {
 }
 
 pub struct BuildingTypeClass<const ELC: usize, const SLC: usize, const OLC: usize> {
-
     techno_type_class: TechnoTypeClass,
     ///	This flag controls whether the building is equiped with a dirt
     ///	bib or not. A building with a bib has a dirt patch automatically
@@ -234,10 +233,12 @@ pub struct BuildingTypeClass<const ELC: usize, const SLC: usize, const OLC: usiz
     OverlapList: [i16; OLC],
 }
 
-impl<const ELC: usize, const SLC: usize, const OLC: usize> IniName for BuildingTypeClass<ELC, SLC, OLC> {
-	fn INI_Name() -> &'static str {
-		"STRUCTURES"
-	}
+impl<const ELC: usize, const SLC: usize, const OLC: usize> IniName
+    for BuildingTypeClass<ELC, SLC, OLC>
+{
+    fn INI_Name() -> &'static str {
+        "STRUCTURES"
+    }
 }
 
 impl<const ELC: usize, const SLC: usize, const OLC: usize> BuildingTypeClass<ELC, SLC, OLC> {

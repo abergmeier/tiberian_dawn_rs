@@ -1,7 +1,13 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
 use crate::{
-    abstract_::MatchesInternalControlName, armor::ArmorType, building::STRUCTF, object::ObjectTypeClass, speed::MPHType, text::IDs, weapon::{WeaponType, Weapons}
+    abstract_::MatchesInternalControlName,
+    armor::ArmorType,
+    building::STRUCTF,
+    object::ObjectTypeClass,
+    speed::MPHType,
+    text::IDs,
+    weapon::{WeaponType, Weapons},
 };
 
 /// This class is the common data for all objects that can be owned, produced,

@@ -2,7 +2,7 @@
 
 pub struct TFixedIHeapClass<T>(Vec<T>);
 
-pub enum InsertError{
+pub enum InsertError {
     ReachedCapacity,
 }
 
