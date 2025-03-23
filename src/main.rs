@@ -51,6 +51,7 @@ mod unit;
 mod weapon;
 
 mod mdata_test;
+mod team_test;
 mod tmdata_test;
 
 const ADVANCED: bool = false;

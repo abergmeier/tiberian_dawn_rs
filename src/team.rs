@@ -6,9 +6,13 @@
     unused_variables
 )]
 
-use crate::abstract_::LookupByName;
+use crate::{
+    abstract_::LookupByName,
+    heap::{InsertError, TFixedIHeapClass},
+};
+use ini::Ini;
 use regex::{Captures, Regex};
-use std::{num::ParseIntError, sync::LazyLock};
+use std::{iter::zip, num::ParseIntError, sync::LazyLock};
 use strum_macros::{EnumCount, EnumIter};
 
 use crate::{
@@ -174,6 +178,78 @@ impl TeamTypeClass {
             ..Default::default()
         };
         buf
+    }
+}
+
+#[derive(Debug, PartialEq)]
+pub enum FromIniError {
+    ReadTeamEntriesError(ReadTeamEntriesError),
+}
+
+impl TFixedIHeapClass<TeamTypeClass> {
+    /// Reads INI data
+    /// INI entry format:
+    /// TeamName = Housename,Roundabout,Learning,Suicide,Spy,Mercenary,
+    ///  RecruitPriority,MaxAllowed,InitNum,Fear,
+    ///  ClassCount,Class:Num,Class:Num,...,
+    ///  MissionCount,Mission:Arg,Mission:Arg,Mission:Arg,...
+    ///
+    /// Was Read_INI in C++ code.
+    pub fn try_read_ini(&mut self, ini: &Ini) -> Result<&mut [TeamTypeClass], FromIniError> {
+        /*------------------------------------------------------------------------
+        Set 'tbuffer' to point just past the INI buffer
+        ------------------------------------------------------------------------*/
+        //len = strlen(buffer) + 2;
+        //tbuffer = buffer + len;
+
+        /*------------------------------------------------------------------------
+        Read all TeamType entry names into 'tbuffer'
+        ------------------------------------------------------------------------*/
+        let ttcs: &mut [TeamTypeClass] = match ini.section(Some(TeamTypeClass::INI_Name())) {
+            None => &mut [Default::default(); 0],
+            Some(props) => self
+                .read_all_team_entries(&props)
+                .map_err(|err| FromIniError::ReadTeamEntriesError(err))?,
+        };
+
+        // If no teams were read in, try reading the old INI format.
+        if ttcs.is_empty() {
+            todo!("Implement old ini reading");
+            //Read_Old_INI(buffer);
+        }
+        Ok(ttcs)
+    }
+}
+
+#[derive(Debug, PartialEq)]
+pub enum ReadTeamEntriesError {
+    Insert(InsertError),
+    Fill(FillError),
+}
+
+impl TFixedIHeapClass<TeamTypeClass> {
+    fn read_all_team_entries(
+        self: &mut Self,
+        props: &ini::Properties,
+    ) -> Result<&mut [TeamTypeClass], ReadTeamEntriesError> {
+        let old_len = self.len();
+
+        // Create sufficient space
+        self.resize_with_default(old_len + props.len())
+            .map_err(|err| ReadTeamEntriesError::Insert(err))?;
+
+        // ----------------------- Loop for all team entries ------------------------
+        for ((team_name, team_values), buf) in
+            zip(props.iter(), self.split_at_mut(old_len).1.iter_mut())
+        {
+            // ....................... Create a new team type ........................
+            let team = TeamTypeClass::new(buf);
+
+            // .......................... Fill the team in ...........................
+            team.Fill_In(team_name, team_values)
+                .map_err(|err| ReadTeamEntriesError::Fill(err))?;
+        }
+        Ok(self.split_at_mut(old_len).1.split_at_mut(props.len()).0)
     }
 }
 
