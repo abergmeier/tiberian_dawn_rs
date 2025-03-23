@@ -1,3 +1,5 @@
+[![CI](https://github.com/abergmeier/tiberian_dawn_rs/actions/workflows/ci.yaml/badge.svg)](https://github.com/abergmeier/tiberian_dawn_rs/actions/workflows/ci.yaml)
+[![Code Check](https://github.com/abergmeier/tiberian_dawn_rs/actions/workflows/style.yaml/badge.svg)](https://github.com/abergmeier/tiberian_dawn_rs/actions/workflows/style.yaml)
 
 # Tiberian Dawn in Rust
 
