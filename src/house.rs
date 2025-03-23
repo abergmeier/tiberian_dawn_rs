@@ -13,7 +13,7 @@ use crate::{abstract_::MatchesInternalControlName, player::PlayerColorType, text
 
 ///	The houses that can be played are listed here. Each has their own
 ///	personality and strengths.
-#[derive(Copy, Clone, EnumCount, EnumIter)]
+#[derive(Copy, Clone, Debug, EnumCount, EnumIter, PartialEq)]
 #[repr(u8)]
 pub enum HousesType {
     //HOUSE_NONE=-1,
