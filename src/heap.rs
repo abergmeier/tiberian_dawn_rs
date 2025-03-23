@@ -1,16 +1,45 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
+use std::ops::Index;
+
 pub struct TFixedIHeapClass<T>(Vec<T>);
 
 pub enum InsertError {
     ReachedCapacity,
 }
 
-impl<T> TFixedIHeapClass<T> {
+impl<T> Index<usize> for TFixedIHeapClass<T> {
+    type Output = <Vec<T> as Index<usize>>::Output;
+    fn index(&self, index: usize) -> &Self::Output {
+        self.0.index(index)
+    }
+}
+
+impl<T: Default> TFixedIHeapClass<T> {
     pub fn with_capacity(capacity: usize) -> Self {
         Self {
             0: Vec::with_capacity(capacity),
         }
+    }
+
+    pub fn resize_with_default(&mut self, new_len: usize) -> Result<(), InsertError> {
+        if new_len > self.0.capacity() {
+            return Err(InsertError::ReachedCapacity);
+        }
+        self.0.resize_with(new_len, Default::default);
+        Ok(())
+    }
+
+    pub fn split_at(&self, mid: usize) -> (&[T], &[T]) {
+        self.0.split_at(mid)
+    }
+
+    pub fn split_at_mut(&mut self, mid: usize) -> (&mut [T], &mut [T]) {
+        self.0.split_at_mut(mid)
+    }
+
+    pub fn position_of(&self, t: &T) -> Option<usize> {
+        self.0.iter().position(|v| std::ptr::eq(v, t))
     }
 
     pub fn try_push(&mut self, value: T) -> Result<(), InsertError> {

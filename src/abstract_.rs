@@ -52,9 +52,20 @@ impl MatchesInternalControlName for AbstractTypeClass {
 }
 
 impl AbstractTypeClass {
-    pub const fn new(name: Option<IDs>, ini: &str) -> Self {
+    pub const fn new(name: Option<IDs>, ini_name: &str) -> Self {
+        Self {
+            Name: name,
+            IniName: Self::build_ini_name(ini_name),
+        }
+    }
+
+    pub fn Set_Name(&mut self, buf: &str) {
+        self.IniName = Self::build_ini_name(buf);
+    }
+
+    const fn build_ini_name(buf: &str) -> [char; 9] {
         let mut ini_name = ['\0'; 9];
-        let ini_bytes = ini.as_bytes();
+        let ini_bytes = buf.as_bytes();
         let len = if ini_bytes.len() < 9 {
             ini_bytes.len()
         } else {
@@ -66,10 +77,6 @@ impl AbstractTypeClass {
             ini_name[i] = ini_bytes[i] as char;
             i += 1;
         }
-
-        Self {
-            Name: name,
-            IniName: ini_name,
-        }
+        ini_name
     }
 }
