@@ -99,6 +99,7 @@ impl ThemeControl {
 
 pub type TransitTheme = Option<ThemeType>;
 
+#[derive(Default)]
 pub struct ThemeClass {}
 
 impl ThemeClass {

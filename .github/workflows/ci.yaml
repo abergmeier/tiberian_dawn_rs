@@ -11,5 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Create Test Data
+        env:
+          SCG62EA_INI: ${{ secrets.SCG62EA_INI }}
+        run: |
+          mkdir -p tests/testdata && echo "$SCG62EA_INI" > "${{ github.workspace }}/tests/testdata/SCG62EA.INI"
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - run: cargo test --all-features

@@ -8,6 +8,7 @@
 
 use crate::ini::IniName;
 
+#[derive(Default)]
 pub struct BaseClass {}
 
 impl IniName for BaseClass {

@@ -4,8 +4,11 @@ use std::ops::Index;
 
 pub struct TFixedIHeapClass<T>(Vec<T>);
 
+#[derive(Debug, PartialEq)]
 pub enum InsertError {
-    ReachedCapacity,
+    /// First value is requested
+    /// Second value is capacity
+    ReachedCapacity(usize, usize),
 }
 
 impl<T> Index<usize> for TFixedIHeapClass<T> {
@@ -24,7 +27,7 @@ impl<T: Default> TFixedIHeapClass<T> {
 
     pub fn resize_with_default(&mut self, new_len: usize) -> Result<(), InsertError> {
         if new_len > self.0.capacity() {
-            return Err(InsertError::ReachedCapacity);
+            return Err(InsertError::ReachedCapacity(new_len, self.0.capacity()));
         }
         self.0.resize_with(new_len, Default::default);
         Ok(())
@@ -44,7 +47,10 @@ impl<T: Default> TFixedIHeapClass<T> {
 
     pub fn try_push(&mut self, value: T) -> Result<(), InsertError> {
         if self.len() == self.0.capacity() {
-            return Err(InsertError::ReachedCapacity);
+            return Err(InsertError::ReachedCapacity(
+                self.len() + 1,
+                self.0.capacity(),
+            ));
         }
 
         self.0.push(value);
@@ -58,7 +64,10 @@ impl<T: Default> TFixedIHeapClass<T> {
     /// Was Alloc(void) in C++ code
     pub fn insert(&mut self, index: usize, element: T) -> Result<(), InsertError> {
         if self.len() == self.0.capacity() {
-            return Err(InsertError::ReachedCapacity);
+            return Err(InsertError::ReachedCapacity(
+                self.len() + 1,
+                self.0.capacity(),
+            ));
         }
         self.0.insert(index, element);
         Ok(())
