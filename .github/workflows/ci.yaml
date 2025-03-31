@@ -16,5 +16,16 @@ jobs:
           SCG62EA_INI: ${{ secrets.SCG62EA_INI }}
         run: |
           mkdir -p tests/testdata && echo "$SCG62EA_INI" > "${{ github.workspace }}/tests/testdata/SCG62EA.INI"
+      - name: Download Demo files
+        uses: KevinRohn/github-full-release-data@v2
+        with:
+          version: demo
+          asset-file: cc1demo1.zip
+          asset-output: tests/testdata
+      - name: Extract Deno
+        uses: ihiroky/extract-action@v1
+        with:
+          file_path: tests/testdata/cc1demo1.zip
+          extract_dir: tests/testdata/cc1demo1
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - run: cargo test --all-features
