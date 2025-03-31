@@ -1,3 +1,5 @@
+include!(concat!(env!("OUT_DIR"), "/crcs.rs"));
+
 mod aadata;
 mod abstract_;
 mod adata;
