@@ -1,10 +1,13 @@
 #![allow(dead_code, non_snake_case, non_upper_case_globals, unused_variables)]
 
+use crate::ADVANCED;
+use crate::PATCH;
+use crate::REFRESH_EOL;
 use crate::armor::ArmorType::*;
 use crate::building::BSizeType::*;
 use crate::building::BuildingTypeClass;
-use crate::building::StructType::*;
 use crate::building::STRUCTF;
+use crate::building::StructType::*;
 use crate::coords::XYP_COORD;
 use crate::direction::*;
 use crate::display::*;
@@ -14,9 +17,6 @@ use crate::map::MCW;
 use crate::rtti::RTTIType::*;
 use crate::text::IDs::*;
 use crate::weapon::WeaponType::*;
-use crate::ADVANCED;
-use crate::PATCH;
-use crate::REFRESH_EOL;
 
 macro_rules! XYCELL {
     ($x:expr, $y:expr) => {

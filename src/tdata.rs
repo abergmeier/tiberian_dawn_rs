@@ -6,6 +6,7 @@
     unused_variables
 )]
 
+use crate::REFRESH_EOL;
 use crate::armor::ArmorType::*;
 use crate::coords::XYP_COORD;
 use crate::display::CELL_PIXEL_H;
@@ -16,7 +17,6 @@ use crate::map::MAP_CELL_W;
 use crate::terrain::{TerrainType::*, TerrainTypeClass};
 use crate::text::IDs::*;
 use crate::theater::THEATERF;
-use crate::REFRESH_EOL;
 
 const TREE_NORMAL: u16 = 600;
 const TREE_WEAK: u16 = 400;

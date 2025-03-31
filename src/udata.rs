@@ -5,6 +5,7 @@
     non_upper_case_globals,
     unused_variables
 )]
+use crate::ADVANCED;
 use crate::abstract_::LookupByInternalControlName;
 use crate::abstract_::MatchesInternalControlName;
 use crate::animation::AnimType::*;
@@ -19,7 +20,6 @@ use crate::unit::UnitType;
 use crate::unit::UnitType::*;
 use crate::unit::UnitTypeClass;
 use crate::weapon::WeaponType::*;
-use crate::ADVANCED;
 use strum::EnumCount;
 use strum::IntoEnumIterator;
 
