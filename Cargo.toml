@@ -1,5 +1,5 @@
 [package]
-name = "CnC_Tiberian_Dawn"
+name = "tiberian_dawn_rs"
 version = "0.1.0"
 edition = "2021"
 proc-macro = true
